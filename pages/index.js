@@ -1,6 +1,13 @@
+import {
+  StyledPageWrapper,
+  StyledHeader,
+} from '../styles/index';
+
 const App = () => {
   return (
-    <div>Hello there friend =)</div>
+    <StyledPageWrapper>
+      <StyledHeader>Here is another header</StyledHeader>
+    </StyledPageWrapper>
   );
 }
 
