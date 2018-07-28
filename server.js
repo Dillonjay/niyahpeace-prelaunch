@@ -1,5 +1,6 @@
 const express = require('express');
 const next = require('next');
+const body = require('body-parser');
 const mongoose = require('mongoose');
 const User = require('./models/index.js');
 
@@ -20,21 +21,26 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 app.prepare()
   .then(() => {
-    const server = express()
+    const server = express();
 
-    server.get('/add_email', (req, res) => {
+    server.use(body.json());
+
+    server.post('/add_email', (req, res) => {
+      console.log('Here is the email request body dude.', req.body);
       const { email } = req.body;
 
       const user = new User({
         email,
       });
+
+      console.log(' ')
   
       user.save(function(err) {
         if (err) throw err;
         console.log('User saved successfully!');
       });
-      
-      return res.status(400).send({ dude: 'sah'});
+
+      return res.status(200).send({ dude: user });
     });
 
     server.get('*', (req, res) => {

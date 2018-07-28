@@ -66,6 +66,7 @@ export const StyledInput = styled.input`
   font-size: 16px;
   width: 85%;
   border: solid white 1px;
+  padding-left: 20px;
 `;
 
 export const StyledButton = styled.button`
