@@ -1,4 +1,5 @@
 import React from 'react';
+import BurgerMenu from '../components/BurgerMenu';
 import {
   StyledPageWrapper,
   StyledHeader,
@@ -55,6 +56,7 @@ class App extends React.Component {
               Your Good Vibes Portal is coming soon...
             </StyledHeader>
             <StyledFormGroup>
+              <BurgerMenu></BurgerMenu>
               <StyledInput
                 onChange={this.onUpdatInputValue}
                 value={this.state.inputValue}
