@@ -1,8 +1,6 @@
 import styled from 'styled-components';
-// import BackgroundImage from '../static/background-img.png';
-// import Logo from '../static/logo.png';
 
-export const StyledPageWrapper = styled.div`
+export const PageWrapper = styled.div`
   position: fixed;
   height: 100vh;
   top: 0;
@@ -13,14 +11,14 @@ export const StyledPageWrapper = styled.div`
   grid-template: 1fr / 1fr 3fr 1fr;
 `;
 
-export const StyledBlackOut = styled.div`
+export const BlackOut = styled.div`
   position: fixed;
   height: 100vh;
   width: 100vw;
   background: rgb(0,0,0, 0.55);
  `;
 
-export const StyledLogo = styled.div`
+export const Logo = styled.div`
   height: 84px;
   background: url('../static/logo.png') 0 0 no-repeat;
   background-size: cover;
@@ -31,20 +29,19 @@ export const StyledLogo = styled.div`
   z-index: 100;
 `;
 
-export const StyledCenterColumn = styled.section`
+export const CenterColumn = styled.section`
   grid-column: 2;
   display: grid;
   grid-template: repeat(5, 1fr) / 1fr;
 `;
 
-export const StyledContent = styled.div`
+export const Content = styled.div`
   grid-area: 2 / 1 / 5 / 2;
-  /* background: rgb(0,0,0, .2); */
   z-index: 100;
   padding: 20px 40px;
 `;
 
-export const StyledHeader = styled.h1`
+export const Header = styled.h1`
   font-family: "Andale Mono", AndaleMono, monospace;
   font-size: 45px;
   font-weight: bold;
@@ -55,12 +52,12 @@ export const StyledHeader = styled.h1`
   width: 95%;
 `;
 
-export const StyledFormGroup = styled.div`
+export const FormGroup = styled.div`
   display: flex;
   height: 50px;
 `;
 
-export const StyledInput = styled.input`
+export const Input = styled.input`
   background: rgb(20,33,52, 0.6);
   color: white;
   font-size: 16px;
@@ -69,7 +66,7 @@ export const StyledInput = styled.input`
   padding-left: 20px;
 `;
 
-export const StyledButton = styled.button`
+export const Button = styled.button`
   background: rgba(237, 35, 37, 0.59);
   border: solid white 1px;
   margin-left: 15px;
@@ -83,3 +80,15 @@ export const StyledButton = styled.button`
   }
 `;
 
+export const MenuButton = styled.div`
+  position: fixed;
+  right: 15px;
+  top: 15px;
+  height: 115px;
+  width: 55px;
+  background: url('../static/test.png') no-repeat;
+  background-size: cover;
+  &:hover {
+    cursor: pointer;
+  }
+`;

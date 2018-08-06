@@ -7,15 +7,15 @@ import {
 
 class BurgerMenu extends React.Component {
   render() {
-    const { isOpen, width, placement, children } = this.props;
+    const { isOpen, placement, children, onClose } = this.props;
     return (
       <React.Fragment>
         <StyledFadedBackground isOpen={isOpen} />
         <StyledSlideOutMenu
-          width={width}
           isOpen={isOpen}
           placement={placement}
         >
+          <div onClick={onClose}>Close</div>
           {children}
         </StyledSlideOutMenu>
       </React.Fragment>

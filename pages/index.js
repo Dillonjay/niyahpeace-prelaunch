@@ -1,16 +1,6 @@
 import React from 'react';
 import BurgerMenu from '../components/BurgerMenu';
-import {
-  StyledPageWrapper,
-  StyledHeader,
-  StyledCenterColumn,
-  StyledContent,
-  StyledBlackOut,
-  StyledInput,
-  StyledFormGroup,
-  StyledButton,
-  StyledLogo,
-} from '../styles/index';
+import * as Styles from '../styles/index';
 
 const postData = (url = ``, data = {}) => {
   // Default options are marked with *
@@ -31,11 +21,20 @@ const postData = (url = ``, data = {}) => {
     .catch(error => console.error(`Fetch Error =\n`, error));
 };
 class App extends React.Component {
-  state = { inputValue: '' };
+  state = { inputValue: '', isMenuOpen: false };
+  onOpenMenu = () => {
+    this.setState({ isMenuOpen: true });
+  }
+  
+  onCloseMenu = () => {
+    this.setState({ isMenuOpen: false });
+  }
+
   onUpdatInputValue = (event) => {
     const inputValue = event.target.value;
     this.setState(() => ({ inputValue }));
   }
+
   onSaveEmail = (email) => {
     postData(`/add_email`, { email })
       .then(res => { 
@@ -46,31 +45,40 @@ class App extends React.Component {
       .catch((err) => console.warn('Noooo there is an error', err));
   }
   render() {
+    const { isMenuOpen } = this.state;
     return (
-      <StyledPageWrapper>
-        <StyledLogo />
-        <StyledBlackOut />
-        <StyledCenterColumn>
-          <StyledContent>
-            <StyledHeader>
+      <Styles.PageWrapper>
+        <Styles.Logo />
+        <Styles.BlackOut />
+        <Styles.MenuButton onClick={this.onOpenMenu} />
+        <Styles.CenterColumn>
+          <Styles.Content>
+            <Styles.Header>
               Your Good Vibes Portal is coming soon...
-            </StyledHeader>
-            <StyledFormGroup>
-              <BurgerMenu></BurgerMenu>
-              <StyledInput
+            </Styles.Header>
+            <Styles.FormGroup>
+              <BurgerMenu
+                onClose={this.onCloseMenu}
+                isOpen={isMenuOpen}
+                placement="right"
+              >
+                Hi
+              </BurgerMenu>
+              <Styles.Input
                 onChange={this.onUpdatInputValue}
                 value={this.state.inputValue}
                 placeholder="Email"
               />
-              <StyledButton
+              <Styles.Button
                 onClick={() => this.onSaveEmail(this.state.inputValue)}
               >
                 SUBSCRIBE
-              </StyledButton>
-            </StyledFormGroup>
-          </StyledContent>
-        </StyledCenterColumn>
-      </StyledPageWrapper>
+              </Styles.Button>
+            </Styles.FormGroup>
+            <div style={{ border: 'solid white' }}>Hello</div>
+          </Styles.Content>
+        </Styles.CenterColumn>
+      </Styles.PageWrapper>
     );
   }
 }
